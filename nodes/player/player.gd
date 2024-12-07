@@ -16,8 +16,8 @@ func _physics_process(_delta):
 	if direction:
 		velocity = direction * speed
 		var a = rad_to_deg(Vector2.UP.angle_to(direction))
-		if absf(a) <= 45.0: animated_sprite.play(&"face_up")
-		elif absf(a) >= 135.0: animated_sprite.play(&"face_down")
+		if absf(a) < 45.0: animated_sprite.play(&"face_up")
+		elif absf(a) > 135.0: animated_sprite.play(&"face_down")
 		elif a > 45.0 and a < 135.0: animated_sprite.play(&"face_right")
 		elif a < -45.0 and a > -135.0: animated_sprite.play(&"face_left")
 	else:

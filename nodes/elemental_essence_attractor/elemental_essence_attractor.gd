@@ -15,10 +15,7 @@ func _physics_process(delta):
 
 
 func attract(essence: ElementalEssence, delta: float):
-	var d = essence.global_position.direction_to(global_position)
-	var v = (d + d.orthogonal()) * force * delta
-	essence.global_position += v
-	
+	essence.attract(global_position, force * delta)
 	if global_position.distance_to(essence.global_position) <= 4.0:
 		collect(essence)
 

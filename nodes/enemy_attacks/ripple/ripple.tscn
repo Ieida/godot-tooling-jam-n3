@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ufl31te2ir6"]
+
+[ext_resource type="PackedScene" uid="uid://sdwwxmobe1lq" path="res://nodes/enemy_attacks/attack.tscn" id="1_bj05o"]
+[ext_resource type="Script" path="res://nodes/enemy_attacks/ripple/ripple.gd" id="2_5w50y"]
+
+[node name="Ripple" instance=ExtResource("1_bj05o")]
+script = ExtResource("2_5w50y")
+force = 32.0
+frequency = 16.0
+amplitude = 3.0

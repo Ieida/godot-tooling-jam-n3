@@ -58,7 +58,7 @@ animations = [{
 }]
 
 [node name="Monster" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
-collision_layer = 8
+collision_layer = 4
 script = ExtResource("1_bjhp0")
 animated_sprite = NodePath("AnimatedSprite2D")
 

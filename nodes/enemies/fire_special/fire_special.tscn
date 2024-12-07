@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0bkuyvk681as"]
+[gd_scene load_steps=24 format=3 uid="uid://d0bkuyvk681as"]
 
 [ext_resource type="Texture2D" uid="uid://dr4bqktbnovpk" path="res://assets/textures/characters/special_enemy_fire_spritesheet.png" id="2_u1ap0"]
 [ext_resource type="Script" path="res://nodes/enemies/fire_special/fire_special.gd" id="2_vg0q8"]
+[ext_resource type="Texture2D" uid="uid://ce368mg44ehrw" path="res://assets/textures/characters/fire_enemy_explosion_animation.png" id="3_l1v6s"]
 [ext_resource type="PackedScene" uid="uid://bxuei80wkaj8r" path="res://nodes/elemental_essence_spawner/elemental_essence_spawner.tscn" id="4_jie6m"]
 [ext_resource type="PackedScene" uid="uid://xa40ncd5e0sh" path="res://nodes/enemy_attacks/explode/explode.tscn" id="4_lc4yd"]
 [ext_resource type="PackedScene" uid="uid://cgaa40g5drxj0" path="res://nodes/elemental_essence/fire/fire.tscn" id="5_4kaak"]
@@ -11,6 +12,46 @@ radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yxf5h"]
 radius = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m2u0"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxt1g"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aup4h"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1cuo"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w67vl"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqnu5"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d51of"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeisc"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6q40"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjpnp"]
+atlas = ExtResource("3_l1v6s")
+region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h1pi"]
 atlas = ExtResource("2_u1ap0")
@@ -32,11 +73,38 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_4m2u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxt1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aup4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1cuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w67vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqnu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d51of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeisc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6q40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjpnp")
 }],
 "loop": false,
 "name": &"explode",
-"speed": 5.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -96,7 +164,7 @@ enemy = NodePath("..")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_877dk")
-animation = &"face_down"
+animation = &"explode"
 
 [node name="ElementalEssenceSpawner" parent="." instance=ExtResource("4_jie6m")]
 essence_scene = ExtResource("5_4kaak")

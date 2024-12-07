@@ -9,7 +9,7 @@ signal exploded
 
 
 func _on_anim_finished():
-	#enemy.queue_free()
+	enemy.queue_free()
 	pass
 
 
@@ -25,8 +25,6 @@ func attack():
 	essence_spawner.spawn()
 	deal_damage()
 	exploded.emit()
-	await get_tree().create_timer(5.0).timeout
-	enemy.queue_free()
 
 
 func deal_damage():

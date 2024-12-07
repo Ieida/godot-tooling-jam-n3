@@ -36,5 +36,5 @@ position = Vector2(226, 220)
 player = NodePath("../Player")
 
 [node name="WaterSpecial" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_87whd")]
-position = Vector2(314, 215)
+position = Vector2(330, 244)
 player = NodePath("../Player")

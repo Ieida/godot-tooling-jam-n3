@@ -73,7 +73,7 @@ script = ExtResource("1_gbjkj")
 shape = SubResource("CircleShape2D_n4lty")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_lifhj")]
-health = 1000
+health = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_n4lty")

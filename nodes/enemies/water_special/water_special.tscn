@@ -142,6 +142,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_uh6f2")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="RippleArea"]
+visible = false
 modulate = Color(0, 0.501961, 1, 0.121569)
 mesh = SubResource("SphereMesh_7qvrd")
 

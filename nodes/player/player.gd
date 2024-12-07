@@ -28,3 +28,7 @@ func _physics_process(_delta):
 func _ready():
 	hitbox.damaged.connect(_on_hitbox_damaged)
 	health_bar.value = hitbox.get_health_percentage() * 100.0
+
+
+func damage(amt: float):
+	hitbox.damage(amt)

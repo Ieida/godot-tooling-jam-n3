@@ -3,7 +3,7 @@ class_name EnemyAttack extends Node
 
 @export var enemy: Enemy
 @export var attack_range: float = 24.0
-@export var damage: int = 100
+@export var damage: float = 100
 var is_attacking: bool
 
 

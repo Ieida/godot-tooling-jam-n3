@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxra4hx6kp3af"]
+
+[ext_resource type="PackedScene" uid="uid://dtwckqogqana6" path="res://nodes/player/player.tscn" id="1_b3h53"]
+[ext_resource type="PackedScene" uid="uid://dvmwt66fefah3" path="res://nodes/enemies/monster/monster.tscn" id="2_8nt5a"]
+
+[node name="Prototype" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="BackgroundColor" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+zoom = Vector2(2, 2)
+
+[node name="Player" parent="." instance=ExtResource("1_b3h53")]
+position = Vector2(320, 180)
+
+[node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_8nt5a")]
+position = Vector2(380, 207)
+player = NodePath("../Player")

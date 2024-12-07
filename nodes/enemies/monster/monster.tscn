@@ -1,10 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvmwt66fefah3"]
 
 [ext_resource type="Script" path="res://nodes/enemies/monster/monster.gd" id="1_bjhp0"]
+[ext_resource type="PackedScene" uid="uid://12q8dc64pvhb" path="res://nodes/enemies/enemy.tscn" id="1_tndcl"]
 [ext_resource type="Texture2D" uid="uid://dtys331lm0yk0" path="res://assets/textures/characters/basic_enemy1_spritesheet.png" id="2_xyg5b"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_k80ob"]
-radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yn7gf"]
 atlas = ExtResource("2_xyg5b")
@@ -22,7 +20,7 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("2_xyg5b")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7f0r6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_obumt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -57,13 +55,12 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Monster" type="CharacterBody2D"]
+[node name="Monster" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_tndcl")]
 script = ExtResource("1_bjhp0")
+speed = 16.0
+animated_sprite = NodePath("AnimatedSprite2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_k80ob")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_7f0r6")
+sprite_frames = SubResource("SpriteFrames_obumt")
 animation = &"face_up"

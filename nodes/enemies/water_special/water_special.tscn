@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbvinl2b6a65k"]
+
+[ext_resource type="PackedScene" uid="uid://12q8dc64pvhb" path="res://nodes/enemies/enemy.tscn" id="1_1tumo"]
+[ext_resource type="Script" path="res://nodes/enemies/water_special/water_special.gd" id="2_im105"]
+[ext_resource type="Texture2D" uid="uid://tlcc41ffw5jx" path="res://assets/textures/characters/special_enemy_water_spritesheet.png" id="3_ltf5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onks1"]
+atlas = ExtResource("3_ltf5p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r65ck"]
+atlas = ExtResource("3_ltf5p")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qy4j"]
+atlas = ExtResource("3_ltf5p")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mspno"]
+atlas = ExtResource("3_ltf5p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ntinj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onks1")
+}],
+"loop": false,
+"name": &"face_down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r65ck")
+}],
+"loop": false,
+"name": &"face_left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qy4j")
+}],
+"loop": false,
+"name": &"face_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mspno")
+}],
+"loop": false,
+"name": &"face_up",
+"speed": 1.0
+}]
+
+[node name="WaterSpecial" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_1tumo")]
+z_index = -1
+script = ExtResource("2_im105")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" parent="." index="0"]
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ntinj")
+animation = &"face_left"

@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0bkuyvk681as"]
+
+[ext_resource type="PackedScene" uid="uid://12q8dc64pvhb" path="res://nodes/enemies/enemy.tscn" id="1_fd0ds"]
+[ext_resource type="Texture2D" uid="uid://dr4bqktbnovpk" path="res://assets/textures/characters/special_enemy_fire_spritesheet.png" id="2_u1ap0"]
+[ext_resource type="Script" path="res://nodes/enemies/fire_special/fire_special.gd" id="2_vg0q8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h1pi"]
+atlas = ExtResource("2_u1ap0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwylx"]
+atlas = ExtResource("2_u1ap0")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfofk"]
+atlas = ExtResource("2_u1ap0")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51b0h"]
+atlas = ExtResource("2_u1ap0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_877dk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h1pi")
+}],
+"loop": false,
+"name": &"face_down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwylx")
+}],
+"loop": false,
+"name": &"face_left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfofk")
+}],
+"loop": false,
+"name": &"face_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51b0h")
+}],
+"loop": false,
+"name": &"face_up",
+"speed": 1.0
+}]
+
+[node name="FireSpecial" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_fd0ds")]
+script = ExtResource("2_vg0q8")
+speed = 32.0
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_877dk")
+animation = &"face_up"

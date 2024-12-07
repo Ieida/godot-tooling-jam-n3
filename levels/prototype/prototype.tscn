@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxra4hx6kp3af"]
+[gd_scene load_steps=3 format=3 uid="uid://cxra4hx6kp3af"]
 
 [ext_resource type="PackedScene" uid="uid://dtwckqogqana6" path="res://nodes/player/player.tscn" id="1_b3h53"]
+[ext_resource type="PackedScene" uid="uid://dvmwt66fefah3" path="res://nodes/enemies/monster/monster.tscn" id="2_8nt5a"]
 
 [node name="Prototype" type="Node2D"]
 
@@ -21,3 +22,7 @@ zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_b3h53")]
 position = Vector2(320, 180)
+
+[node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_8nt5a")]
+position = Vector2(380, 207)
+player = NodePath("../Player")

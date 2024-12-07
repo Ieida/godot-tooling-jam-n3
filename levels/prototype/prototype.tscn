@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxra4hx6kp3af"]
+[gd_scene load_steps=6 format=3 uid="uid://cxra4hx6kp3af"]
 
 [ext_resource type="PackedScene" uid="uid://dtwckqogqana6" path="res://nodes/player/player.tscn" id="1_b3h53"]
+[ext_resource type="PackedScene" uid="uid://dtmwup1l7m6tf" path="res://nodes/follow_camera/follow_camera.tscn" id="1_y8ghe"]
 [ext_resource type="PackedScene" uid="uid://dvmwt66fefah3" path="res://nodes/enemies/monster/monster.tscn" id="2_8nt5a"]
+[ext_resource type="PackedScene" uid="uid://d0bkuyvk681as" path="res://nodes/enemies/fire_special/fire_special.tscn" id="3_k8eib"]
+[ext_resource type="PackedScene" uid="uid://bbvinl2b6a65k" path="res://nodes/enemies/water_special/water_special.tscn" id="4_87whd"]
 
 [node name="Prototype" type="Node2D"]
 
@@ -16,13 +19,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 180)
-zoom = Vector2(2, 2)
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_y8ghe")]
+position = Vector2(337, 187)
+target = NodePath("../Player")
+max_distance = 256.0
 
 [node name="Player" parent="." instance=ExtResource("1_b3h53")]
 position = Vector2(320, 180)
 
 [node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_8nt5a")]
 position = Vector2(380, 207)
+player = NodePath("../Player")
+
+[node name="FireSpecial" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_k8eib")]
+position = Vector2(226, 220)
+player = NodePath("../Player")
+
+[node name="WaterSpecial" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_87whd")]
+position = Vector2(314, 215)
 player = NodePath("../Player")

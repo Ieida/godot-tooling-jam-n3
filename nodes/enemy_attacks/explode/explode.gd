@@ -1,26 +1,32 @@
 class_name EnemyAttackExplode extends EnemyAttack
 
 
+signal exploded
+
+
 @export var area: Area2D
-@onready var hint: MeshInstance2D = $Hint
+@export var essence_spawner: ElementalEssenceSpawner
 
 
 func _on_anim_finished():
-	enemy.queue_free()
+	#enemy.queue_free()
+	pass
 
 
 func _ready():
-	hint.hide()
-	hint.reparent.call_deferred(enemy, false)
+	super()
 
 
 func attack():
 	super()
-	hint.show()
 	enemy.is_alive = false
 	enemy.animated_sprite.play(&"explode")
 	enemy.animated_sprite.animation_finished.connect(_on_anim_finished, CONNECT_ONE_SHOT)
+	essence_spawner.spawn()
 	deal_damage()
+	exploded.emit()
+	await get_tree().create_timer(5.0).timeout
+	enemy.queue_free()
 
 
 func deal_damage():

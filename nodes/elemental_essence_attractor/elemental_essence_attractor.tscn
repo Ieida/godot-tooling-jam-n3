@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://utmw610ve3pj"]
+
+[ext_resource type="Script" path="res://nodes/elemental_essence_attractor/elemental_essence_attractor.gd" id="1_c4yqx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2x2x"]
+radius = 32.0
+
+[node name="ElementalEssenceAttractor" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("1_c4yqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g2x2x")

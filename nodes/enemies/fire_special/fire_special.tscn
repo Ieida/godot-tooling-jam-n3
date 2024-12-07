@@ -1,11 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0bkuyvk681as"]
+[gd_scene load_steps=13 format=3 uid="uid://d0bkuyvk681as"]
 
 [ext_resource type="Texture2D" uid="uid://dr4bqktbnovpk" path="res://assets/textures/characters/special_enemy_fire_spritesheet.png" id="2_u1ap0"]
 [ext_resource type="Script" path="res://nodes/enemies/fire_special/fire_special.gd" id="2_vg0q8"]
+[ext_resource type="PackedScene" uid="uid://bxuei80wkaj8r" path="res://nodes/elemental_essence_spawner/elemental_essence_spawner.tscn" id="4_jie6m"]
 [ext_resource type="PackedScene" uid="uid://xa40ncd5e0sh" path="res://nodes/enemy_attacks/explode/explode.tscn" id="4_lc4yd"]
+[ext_resource type="PackedScene" uid="uid://cgaa40g5drxj0" path="res://nodes/elemental_essence/fire/fire.tscn" id="5_4kaak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75w5v"]
 radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxf5h"]
+radius = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h1pi"]
 atlas = ExtResource("2_u1ap0")
@@ -66,9 +71,6 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yxf5h"]
-radius = 32.0
-
 [node name="FireSpecial" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 collision_layer = 4
 script = ExtResource("2_vg0q8")
@@ -78,11 +80,6 @@ speed = 32.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_75w5v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_877dk")
-animation = &"face_down"
-
 [node name="ExplosionHurtbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -91,6 +88,19 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHurtbox"]
 shape = SubResource("CircleShape2D_yxf5h")
 
-[node name="Explode" parent="." node_paths=PackedStringArray("area", "enemy") instance=ExtResource("4_lc4yd")]
+[node name="Explode" parent="." node_paths=PackedStringArray("area", "essence_spawner", "enemy") instance=ExtResource("4_lc4yd")]
 area = NodePath("../ExplosionHurtbox")
+essence_spawner = NodePath("../ElementalEssenceSpawner")
 enemy = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_877dk")
+animation = &"face_down"
+
+[node name="ElementalEssenceSpawner" parent="." instance=ExtResource("4_jie6m")]
+essence_scene = ExtResource("5_4kaak")
+amount = 8
+initial_velocity_min = 256.0
+initial_velocity_max = 512.0
+damping = 12.0

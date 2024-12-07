@@ -1,6 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d05o18hgx0p7w"]
-
-[ext_resource type="Script" path="res://elements/fire.gd" id="1_o4xsn"]
-
-[resource]
-script = ExtResource("1_o4xsn")

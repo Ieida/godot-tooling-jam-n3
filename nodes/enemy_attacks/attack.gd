@@ -11,6 +11,10 @@ func _physics_process(_delta):
 	if not is_attacking and is_in_range(): attack()
 
 
+func _ready():
+	pass
+
+
 func attack():
 	is_attacking = true
 

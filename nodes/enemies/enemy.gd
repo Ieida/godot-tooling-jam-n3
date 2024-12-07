@@ -8,8 +8,16 @@ class_name Enemy extends CharacterBody2D
 var is_alive: bool = true
 
 
+func _enter_tree():
+	pass
+
+
 func _physics_process(_delta):
 	if is_alive and player: chase()
+
+
+func _ready():
+	pass
 
 
 func chase():

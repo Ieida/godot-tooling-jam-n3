@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxuei80wkaj8r"]
+
+[ext_resource type="Script" path="res://nodes/elemental_essence_spawner/elemental_essence_spawner.gd" id="1_sod30"]
+
+[node name="ElementalEssenceSpawner" type="Node2D"]
+script = ExtResource("1_sod30")

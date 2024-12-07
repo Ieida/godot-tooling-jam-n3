@@ -1,8 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bbvinl2b6a65k"]
 
-[ext_resource type="PackedScene" uid="uid://12q8dc64pvhb" path="res://nodes/enemies/enemy.tscn" id="1_1tumo"]
 [ext_resource type="Script" path="res://nodes/enemies/water_special/water_special.gd" id="2_im105"]
 [ext_resource type="Texture2D" uid="uid://tlcc41ffw5jx" path="res://assets/textures/characters/special_enemy_water_spritesheet.png" id="3_ltf5p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75w5v"]
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onks1"]
 atlas = ExtResource("3_ltf5p")
@@ -55,15 +57,17 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="WaterSpecial" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_1tumo")]
+[node name="WaterSpecial" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 z_index = -1
+collision_layer = 8
 script = ExtResource("2_im105")
 animated_sprite = NodePath("AnimatedSprite2D")
+speed = 0.0
 
-[node name="CollisionShape2D" parent="." index="0"]
-disabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_75w5v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ntinj")
 animation = &"face_left"

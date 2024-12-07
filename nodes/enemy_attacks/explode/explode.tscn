@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://xa40ncd5e0sh"]
+
+[ext_resource type="Script" path="res://nodes/enemy_attacks/explode/explode.gd" id="1_parc6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h1jiw"]
+radius = 32.0
+height = 64.0
+
+[node name="Explode" type="Node"]
+script = ExtResource("1_parc6")
+
+[node name="Hint" type="MeshInstance2D" parent="."]
+modulate = Color(1, 0, 0, 0.333333)
+mesh = SubResource("SphereMesh_h1jiw")

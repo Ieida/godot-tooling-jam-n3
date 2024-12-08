@@ -15,6 +15,10 @@ func _enter_tree():
 	if ps.size() > 0: player = ps[0]
 
 
+func _on_die_anim_finished():
+	queue_free()
+
+
 func _on_hitbox_health_reached_zero():
 	die()
 
@@ -43,6 +47,11 @@ func chase():
 
 func die():
 	is_alive = false
+	if animated_sprite.sprite_frames.has_animation(&"die"):
+		animated_sprite.animation_finished.connect(_on_die_anim_finished, CONNECT_ONE_SHOT)
+		animated_sprite.play(&"die")
+	else:
+		queue_free()
 
 
 func disable_collision():

@@ -182,6 +182,7 @@ initial_velocity_max = 512.0
 damping = 12.0
 
 [node name="Hitbox" parent="." instance=ExtResource("7_ewuqk")]
+health = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_bb7qn")

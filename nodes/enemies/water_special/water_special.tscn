@@ -131,6 +131,17 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_onks1")
 }],
 "loop": false,
@@ -201,7 +212,7 @@ frame_progress = 0.214806
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ntinj")
-animation = &"face_left"
+animation = &"die"
 
 [node name="Ripple" parent="." node_paths=PackedStringArray("area") instance=ExtResource("3_sfxow")]
 area = NodePath("../RippleArea")
@@ -214,6 +225,7 @@ initial_velocity_max = 512.0
 damping = 12.0
 
 [node name="Hitbox" parent="." instance=ExtResource("7_2i8t8")]
+health = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_avq16")

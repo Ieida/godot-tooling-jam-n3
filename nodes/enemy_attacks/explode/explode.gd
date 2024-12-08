@@ -30,5 +30,5 @@ func attack():
 func deal_damage():
 	var ars = area.get_overlapping_areas()
 	for a in ars:
-		if a is Hitbox:
+		if a is Hitbox and not enemy.is_ancestor_of(a):
 			a.damage(damage)

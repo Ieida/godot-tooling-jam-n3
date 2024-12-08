@@ -28,6 +28,14 @@ region = Rect2(16, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yn7gf")
 }],
 "loop": false,
@@ -75,9 +83,10 @@ shape = SubResource("CircleShape2D_75w5v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_obumt")
-animation = &"face_up"
+animation = &"die"
 
 [node name="Hitbox" parent="." instance=ExtResource("3_la6nq")]
+health = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_ygav8")

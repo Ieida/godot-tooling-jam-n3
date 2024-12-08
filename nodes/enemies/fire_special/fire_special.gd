@@ -1,1 +1,1 @@
-class_name FireSpecial extends Enemy
+class_name FireSpecial extends ElementalEnemy

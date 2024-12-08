@@ -1,1 +1,1 @@
-class_name WaterSpecial extends Enemy
+class_name WaterSpecial extends ElementalEnemy

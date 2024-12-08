@@ -19,10 +19,10 @@ func _process_character_body(body: CharacterBody2D, delta: float):
 	var dst = area.global_position.distance_to(body.global_position)
 	var st = (sin(time * frequency) + 1.0) * amplitude * 0.5
 	var sd = (sin(dst * frequency) + 1.0) * amplitude * 0.5
-	var t = max(st * sd, 0.2)
+	var t = clampf(st * sd, 0.1, amplitude * 0.9)
 	var p = dst / 64.0
 	var f = (1.0 - p) * t * force
 	body.velocity = d * f
 	body.move_and_slide()
 	
-	if t >= amplitude - 0.1 and body.has_method(&"damage"): body.damage(damage * delta)
+	if body.has_method(&"damage"): body.damage(t * damage * delta)

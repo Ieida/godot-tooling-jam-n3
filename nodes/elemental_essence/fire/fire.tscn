@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgaa40g5drxj0"]
+[gd_scene load_steps=5 format=3 uid="uid://cgaa40g5drxj0"]
 
 [ext_resource type="PackedScene" uid="uid://bitr8q1nfyxys" path="res://nodes/elemental_essence/elemental_essence.tscn" id="1_r4uud"]
 [ext_resource type="Script" path="res://nodes/elemental_essence/fire/fire.gd" id="2_e876r"]
+[ext_resource type="Script" path="res://elements/fire.gd" id="3_6s1mr"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_nw3xi"]
-size = Vector2(2, 2)
+[sub_resource type="Resource" id="Resource_3fugi"]
+script = ExtResource("3_6s1mr")
 
 [node name="Fire" instance=ExtResource("1_r4uud")]
 script = ExtResource("2_e876r")
+element = SubResource("Resource_3fugi")
 
-[node name="Model" type="MeshInstance2D" parent="." index="1"]
-modulate = Color(1, 0.45, 0, 1)
-mesh = SubResource("QuadMesh_nw3xi")
+[node name="Model" parent="." index="1"]
+modulate = Color(1, 0.45098, 0, 1)

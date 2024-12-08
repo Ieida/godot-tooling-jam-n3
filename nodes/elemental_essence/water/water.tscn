@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0v2yyoodiqtl"]
+
+[ext_resource type="PackedScene" uid="uid://bitr8q1nfyxys" path="res://nodes/elemental_essence/elemental_essence.tscn" id="1_e8xdx"]
+[ext_resource type="Script" path="res://elements/water.gd" id="2_gmk5g"]
+[ext_resource type="Script" path="res://nodes/elemental_essence/water/water.gd" id="2_nh3x6"]
+
+[sub_resource type="Resource" id="Resource_s3ybi"]
+script = ExtResource("2_gmk5g")
+
+[node name="Water" instance=ExtResource("1_e8xdx")]
+script = ExtResource("2_nh3x6")
+amplitude = 1.0
+frequency = 0.2
+element = SubResource("Resource_s3ybi")
+
+[node name="Model" parent="." index="1"]
+modulate = Color(0.498039, 1, 1, 1)

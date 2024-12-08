@@ -1,12 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://12q8dc64pvhb"]
+[gd_scene load_steps=5 format=3 uid="uid://12q8dc64pvhb"]
 
 [ext_resource type="Script" path="res://nodes/enemies/enemy.gd" id="1_rax0k"]
+[ext_resource type="PackedScene" uid="uid://fn3iabr7mn1s" path="res://nodes/hitbox/hitbox.tscn" id="3_co7n7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75w5v"]
+resource_local_to_scene = true
 radius = 8.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_56o0k"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "hitbox")]
 script = ExtResource("1_rax0k")
+animated_sprite = NodePath("AnimatedSprite2D")
+hitbox = NodePath("Hitbox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_75w5v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_co7n7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_56o0k")

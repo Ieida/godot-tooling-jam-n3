@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckm3iig1b57ef"]
+
+[ext_resource type="PackedScene" uid="uid://12q8dc64pvhb" path="res://nodes/enemies/enemy.tscn" id="1_24mr5"]
+[ext_resource type="Script" path="res://nodes/enemies/elemental/elemental_enemy.gd" id="2_t02ri"]
+[ext_resource type="PackedScene" uid="uid://bxuei80wkaj8r" path="res://nodes/elemental_essence_spawner/elemental_essence_spawner.tscn" id="3_c75oi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q4dj"]
+resource_local_to_scene = true
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avam4"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="ElementalEnemy" node_paths=PackedStringArray("essense_spawner") instance=ExtResource("1_24mr5")]
+script = ExtResource("2_t02ri")
+essense_spawner = NodePath("ElementalEssenceSpawner")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_2q4dj")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_avam4")
+
+[node name="ElementalEssenceSpawner" parent="." index="3" instance=ExtResource("3_c75oi")]

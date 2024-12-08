@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 
 
 @export var animated_sprite: AnimatedSprite2D
+@export var hitbox: Hitbox
 @export var player: Player
 @export var speed: float = 16.0
 @export var ideal_distance_from_target: float = 16.0
@@ -12,12 +13,16 @@ func _enter_tree():
 	pass
 
 
+func _on_hitbox_health_reached_zero():
+	die()
+
+
 func _physics_process(_delta):
 	if is_alive and player: chase()
 
 
 func _ready():
-	pass
+	hitbox.health_reached_zero.connect(_on_hitbox_health_reached_zero)
 
 
 func chase():
@@ -32,6 +37,10 @@ func chase():
 	elif absf(a) >= 135.0: animated_sprite.play(&"face_down")
 	elif a > 45.0 and a < 135.0: animated_sprite.play(&"face_right")
 	elif a < -45.0 and a > -135.0: animated_sprite.play(&"face_left")
+
+
+func die():
+	is_alive = false
 
 
 func disable_collision():

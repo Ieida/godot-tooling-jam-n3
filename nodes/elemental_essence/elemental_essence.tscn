@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bitr8q1nfyxys"]
+[gd_scene load_steps=4 format=3 uid="uid://bitr8q1nfyxys"]
 
 [ext_resource type="Script" path="res://nodes/elemental_essence/elemental_essence.gd" id="1_gkjgv"]
-[ext_resource type="Script" path="res://elements/fire.gd" id="2_il8r5"]
-
-[sub_resource type="Resource" id="Resource_1ovfk"]
-script = ExtResource("2_il8r5")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj06v"]
 radius = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7hsva"]
+size = Vector2(2, 2)
 
 [node name="ElementalEssence" type="Area2D"]
 z_index = -2
@@ -15,7 +14,9 @@ collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_gkjgv")
-element = SubResource("Resource_1ovfk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bj06v")
+
+[node name="Model" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_7hsva")

@@ -1,11 +1,15 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbvinl2b6a65k"]
+[gd_scene load_steps=30 format=3 uid="uid://bbvinl2b6a65k"]
 
 [ext_resource type="Texture2D" uid="uid://dn2217njeew7g" path="res://assets/textures/characters/water_enemy_splash_animation2.png" id="2_2bt6l"]
 [ext_resource type="Script" path="res://nodes/enemies/water_special/water_special.gd" id="2_im105"]
 [ext_resource type="Texture2D" uid="uid://tlcc41ffw5jx" path="res://assets/textures/characters/special_enemy_water_spritesheet.png" id="3_ltf5p"]
 [ext_resource type="PackedScene" uid="uid://1ufl31te2ir6" path="res://nodes/enemy_attacks/ripple/ripple.tscn" id="3_sfxow"]
+[ext_resource type="PackedScene" uid="uid://bxuei80wkaj8r" path="res://nodes/elemental_essence_spawner/elemental_essence_spawner.tscn" id="5_e31wn"]
+[ext_resource type="PackedScene" uid="uid://d0v2yyoodiqtl" path="res://nodes/elemental_essence/water/water.tscn" id="6_8u0k1"]
+[ext_resource type="PackedScene" uid="uid://fn3iabr7mn1s" path="res://nodes/hitbox/hitbox.tscn" id="7_2i8t8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75w5v"]
+resource_local_to_scene = true
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uh6f2"]
@@ -158,11 +162,16 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="WaterSpecial" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_avq16"]
+resource_local_to_scene = true
+
+[node name="WaterSpecial" type="CharacterBody2D" node_paths=PackedStringArray("essense_spawner", "animated_sprite", "hitbox")]
 z_index = -1
 collision_layer = 8
 script = ExtResource("2_im105")
+essense_spawner = NodePath("ElementalEssenceSpawner")
 animated_sprite = NodePath("AnimatedSprite2D")
+hitbox = NodePath("Hitbox")
 speed = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -196,3 +205,15 @@ animation = &"face_left"
 
 [node name="Ripple" parent="." node_paths=PackedStringArray("area") instance=ExtResource("3_sfxow")]
 area = NodePath("../RippleArea")
+
+[node name="ElementalEssenceSpawner" parent="." instance=ExtResource("5_e31wn")]
+essence_scene = ExtResource("6_8u0k1")
+amount = 8
+initial_velocity_min = 256.0
+initial_velocity_max = 512.0
+damping = 12.0
+
+[node name="Hitbox" parent="." instance=ExtResource("7_2i8t8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_avq16")

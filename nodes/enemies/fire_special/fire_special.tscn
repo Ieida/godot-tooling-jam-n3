@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0bkuyvk681as"]
+[gd_scene load_steps=26 format=3 uid="uid://d0bkuyvk681as"]
 
 [ext_resource type="Texture2D" uid="uid://dr4bqktbnovpk" path="res://assets/textures/characters/special_enemy_fire_spritesheet.png" id="2_u1ap0"]
 [ext_resource type="Script" path="res://nodes/enemies/fire_special/fire_special.gd" id="2_vg0q8"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bxuei80wkaj8r" path="res://nodes/elemental_essence_spawner/elemental_essence_spawner.tscn" id="4_jie6m"]
 [ext_resource type="PackedScene" uid="uid://xa40ncd5e0sh" path="res://nodes/enemy_attacks/explode/explode.tscn" id="4_lc4yd"]
 [ext_resource type="PackedScene" uid="uid://cgaa40g5drxj0" path="res://nodes/elemental_essence/fire/fire.tscn" id="5_4kaak"]
+[ext_resource type="PackedScene" uid="uid://fn3iabr7mn1s" path="res://nodes/hitbox/hitbox.tscn" id="7_ewuqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75w5v"]
+resource_local_to_scene = true
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yxf5h"]
@@ -139,10 +141,16 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="FireSpecial" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bb7qn"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="FireSpecial" type="CharacterBody2D" node_paths=PackedStringArray("essense_spawner", "animated_sprite", "hitbox")]
 collision_layer = 4
 script = ExtResource("2_vg0q8")
+essense_spawner = NodePath("ElementalEssenceSpawner")
 animated_sprite = NodePath("AnimatedSprite2D")
+hitbox = NodePath("Hitbox")
 speed = 32.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -172,3 +180,8 @@ amount = 8
 initial_velocity_min = 256.0
 initial_velocity_max = 512.0
 damping = 12.0
+
+[node name="Hitbox" parent="." instance=ExtResource("7_ewuqk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_bb7qn")

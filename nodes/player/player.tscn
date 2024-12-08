@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtwckqogqana6"]
+[gd_scene load_steps=14 format=3 uid="uid://dtwckqogqana6"]
 
 [ext_resource type="Script" path="res://nodes/player/player.gd" id="1_gbjkj"]
 [ext_resource type="Texture2D" uid="uid://b22lpakhj32c3" path="res://assets/textures/characters/player1_spritesheet.png" id="2_hr4kq"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4lty"]
 radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x6er"]
+atlas = ExtResource("2_hr4kq")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vd75"]
 atlas = ExtResource("2_hr4kq")
@@ -26,6 +30,14 @@ region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cceb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x6er")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8vd75")
@@ -81,7 +93,7 @@ shape = SubResource("CircleShape2D_n4lty")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8cceb")
-animation = &"face_down"
+animation = &"die"
 
 [node name="ElementalEssenceAttractor" parent="." instance=ExtResource("4_wkakx")]
 

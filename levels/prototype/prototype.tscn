@@ -27,14 +27,11 @@ max_distance = 256.0
 [node name="Player" parent="." instance=ExtResource("1_b3h53")]
 position = Vector2(320, 180)
 
-[node name="Monster" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_8nt5a")]
+[node name="Monster" parent="." instance=ExtResource("2_8nt5a")]
 position = Vector2(380, 207)
-player = NodePath("../Player")
 
-[node name="FireSpecial" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_k8eib")]
+[node name="FireSpecial" parent="." instance=ExtResource("3_k8eib")]
 position = Vector2(226, 220)
-player = NodePath("../Player")
 
-[node name="WaterSpecial" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_87whd")]
+[node name="WaterSpecial" parent="." instance=ExtResource("4_87whd")]
 position = Vector2(330, 244)
-player = NodePath("../Player")

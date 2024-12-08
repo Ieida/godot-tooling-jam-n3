@@ -77,7 +77,7 @@ bg_color = Color(0.2, 0.2, 0.2, 0.333333)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r6xw"]
 bg_color = Color(1, 0.2, 0.2, 0.498039)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_gbjkj")
 

@@ -3,14 +3,16 @@ class_name Enemy extends CharacterBody2D
 
 @export var animated_sprite: AnimatedSprite2D
 @export var hitbox: Hitbox
-@export var player: Player
 @export var speed: float = 16.0
 @export var ideal_distance_from_target: float = 16.0
+var player: Player
 var is_alive: bool = true
 
 
 func _enter_tree():
-	pass
+	await get_tree().current_scene.ready
+	var ps = get_tree().get_nodes_in_group(&"Player")
+	if ps.size() > 0: player = ps[0]
 
 
 func _on_hitbox_health_reached_zero():
